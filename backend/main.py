@@ -1,13 +1,18 @@
 import os
 from fastapi import FastAPI, APIRouter, Depends, HTTPException, status, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from typing import List, Optional
 from sqlalchemy.orm import Session
 import requests
+from dotenv import load_dotenv  # <- import dotenv
 
 import models
 import auth
+
+# Carrega variáveis do .env
+load_dotenv()
 
 app = FastAPI(title="Sistema de Recomendação Inteligente de Livros")
 
@@ -16,6 +21,7 @@ origins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "http://frontend",
+    "https://sistema-recomendacao-livros.vercel.app",  # Adicione aqui a URL do seu frontend na Vercel
 ]
 
 app.add_middleware(
@@ -25,11 +31,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Endpoint raiz na raiz "/"
-@app.get("/", tags=["Status"])
-def root():
-    return {"message": "API funcionando na raiz /"}
 
 # Schemas
 class BookResponse(BaseModel):
@@ -115,7 +116,7 @@ def login_for_access_token(form_data: auth.OAuth2PasswordRequestForm = Depends()
 
 @api_router.get("/recommendations", response_model=List[BookResponse], tags=["Livros"])
 def get_book_recommendations(db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
-    # Por enquanto, exemplo fixo de livros
+    # Exemplo fixo de livros
     return [
         BookResponse(title="Livro Exemplo 1", authors="Autor 1", description="Descrição 1"),
         BookResponse(title="Livro Exemplo 2", authors="Autor 2", description="Descrição 2"),
