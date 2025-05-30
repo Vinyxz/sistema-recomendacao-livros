@@ -26,6 +26,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Endpoint raiz na raiz "/"
+@app.get("/", tags=["Status"])
+def root():
+    return {"message": "API funcionando na raiz /"}
+
 # Schemas
 class BookResponse(BaseModel):
     title: str
@@ -84,7 +89,7 @@ def get_current_user(token: str = Depends(auth.oauth2_scheme), db: Session = Dep
 api_router = APIRouter(prefix="/api")
 
 @api_router.get("/", tags=["Status"])
-def root():
+def api_root():
     return {"message": "API está funcionando"}
 
 @api_router.post("/register", response_model=Token, tags=["Usuário"])
