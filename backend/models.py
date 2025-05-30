@@ -4,10 +4,16 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine
 
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://sistema:2045@db:5432/pesquisa_livros")
+# Pega a URL do banco da variável de ambiente.  
+# Caso não encontre, levanta erro para evitar conexões erradas.
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise ValueError("A variável de ambiente DATABASE_URL não está definida")
 
 engine = create_engine(DATABASE_URL)
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
 Base = declarative_base()
 
 def get_db():
