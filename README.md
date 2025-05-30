@@ -70,5 +70,5 @@ Sistema de Recomendação Inteligente de Livros/
 
 Contato
 vinicius marques — vinyvirtus18@gmail.com
-LinkedIn | GitHub
+
 
