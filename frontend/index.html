@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sistema de Recomendação de Livros</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>Recomendações de Livros</h1>
+        <nav>
+            <button id="logout-button" style="display: none;">Sair</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Área de autenticação: login e cadastro -->
+        <section id="auth-section">
+            <!-- Formulário de Login -->
+            <div class="auth-form">
+                <h2>Login</h2>
+                <form id="login-form">
+                    <input
+                        type="text"
+                        id="login-username"
+                        name="login-username"
+                        placeholder="Usuário"
+                        required
+                        autocomplete="username"
+                    />
+                    <input
+                        type="password"
+                        id="login-password"
+                        name="login-password"
+                        placeholder="Senha"
+                        required
+                        autocomplete="current-password"
+                    />
+                    <button type="submit">Entrar</button>
+                    <p class="error-message" id="login-error-message"></p>
+                </form>
+                <p>
+                    Não tem uma conta?
+                    <a href="#" id="show-register">Cadastre-se</a>
+                </p>
+            </div>
+
+            <!-- Formulário de Cadastro -->
+            <div class="auth-form" style="display: none;">
+                <h2>Cadastro</h2>
+                <form id="register-form">
+                    <input
+                        type="text"
+                        id="register-username"
+                        name="register-username"
+                        placeholder="Usuário"
+                        required
+                        autocomplete="username"
+                    />
+                    <input
+                        type="password"
+                        id="register-password"
+                        name="register-password"
+                        placeholder="Senha"
+                        required
+                        autocomplete="new-password"
+                    />
+                    <button type="submit">Cadastrar</button>
+                    <p class="error-message" id="register-error-message"></p>
+                </form>
+                <p>
+                    Já tem uma conta?
+                    <a href="#" id="show-login">Fazer Login</a>
+                </p>
+            </div>
+        </section>
+
+        <!-- Área de recomendações -->
+        <section id="recommendations-section" style="display: none;">
+            <div class="search-bar">
+                <input
+                    type="text"
+                    id="search-input"
+                    placeholder="Pesquisar livros por tema ou título..."
+                    autocomplete="off"
+                />
+                <button id="search-button">Pesquisar</button>
+            </div>
+
+            <h2>Livros Recomendados</h2>
+            <div id="books-container" class="books-grid"></div>
+            <p class="message" id="no-books-message" style="display: none;">
+                Nenhum livro encontrado para sua pesquisa.
+            </p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

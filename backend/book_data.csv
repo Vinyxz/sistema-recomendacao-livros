@@ -1,0 +1,6 @@
+id,title,authors,description,image
+1,The Pragmatic Programmer,Andrew Hunt,Basic principles of software engineering,https://covers.openlibrary.org/b/id/330062-L.jpg
+2,Clean Code,Robert C. Martin,Best practices for writing clean code,https://covers.openlibrary.org/b/id/347450-L.jpg
+3,Design Patterns,Erich Gamma,Classic book on design patterns in software engineering,https://covers.openlibrary.org/b/id/5037019-L.jpg
+4,Refactoring,Martin Fowler,Improving the design of existing code,https://covers.openlibrary.org/b/id/7894236-L.jpg
+5,Code Complete,Steve McConnell,Comprehensive book on software construction,https://covers.openlibrary.org/b/id/12131161-L.jpg
